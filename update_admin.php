@@ -309,6 +309,8 @@ mysql_close($conn);
     <!-- Custom Js -->
     <script src="assets/js/custom-scripts.js"></script>
 
+    <!--Action JS-->
+    <script src="js/action.js"></script>
 
 </body>
 
