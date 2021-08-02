@@ -1,0 +1,177 @@
+/*Dropdown list of courses*/
+.select_course{
+    margin-top: 10px;
+    margin-left: 1%;
+    width: 500px;
+    font-size: large;
+}
+
+/*Space for the notes*/
+.course_display{
+    border-radius: 5px;
+    background-color: #102b3fff; 
+    color: white;
+    height: 200px; 
+    width: 98%;
+    margin: 18px;
+}
+
+/*Question textarea*/
+.question_wrap{
+    margin: 10px auto;
+    height: 300px;
+    
+}
+
+.question_space {
+    background-color: gainsboro;
+    border-radius: 15px;
+    
+  }
+
+.question_form{
+    background-color: ivory;
+  border-radius: 10px;
+  width: 90%;
+  height: 90%;
+  margin:0 auto;
+  position: relative;
+  display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.form__input {
+    position: absolute;
+    margin-left: 40px;
+    margin-top: 50px;
+    top: 0;
+    left: 0;
+    width: 60%;
+    height: 70%;
+    border: none;
+    border-bottom: 4px solid #81f4e1ff;
+    border-radius: 0.5rem;
+    color: #102b3fff;
+    outline: none;
+    padding: 1.25rem;
+    background: none;
+    resize:none;
+    font-size: large;
+}
+
+.form__input:hover {
+    border-color: #cc2936ff;    
+}
+
+.form__input:focus {
+    border-color:  #030027ff;    
+}
+
+.form__label{
+    position: absolute;
+    top: 2rem;
+    left: 4rem;
+}
+
+/*Question submit button*/
+.submit_question{
+    position: absolute;
+    right: 4rem;
+    bottom: 3rem;
+    border:none;
+    outline: none;
+    height: 20%;
+    width: 30%;
+    font-size: 80%;
+    border-radius: 5px;
+}
+
+.submit_question:hover {
+    background-color: #333;  
+    color: white;  
+}
+
+.submit_question:focus {
+    background-color: #2DAFCB;    
+}
+
+/*search box styles*/
+.container .input {
+    border: 0;
+    outline: none;
+    color: #8b7d77;
+  }
+  
+  .search_wrap {
+    width: 600px;
+    margin-left: 15%;
+  }
+  
+  .search_wrap .search_box {
+      position: relative;
+    width: 600px;
+    height: 60px;
+  }
+  
+  .search_wrap .search_box .input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 5px 20px;
+    border-radius: 3px;
+    font-size: 18px;
+  }
+  
+  .search_wrap .search_box .btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60px;
+    height: 100%;
+    background: #2dafcb;
+    z-index: 1;
+    cursor: pointer;
+  }
+  
+  .search_wrap .search_box .btn:hover {
+    background: #708bd2;
+  }
+  
+  .search_wrap .search_box .btn.btn_common .fas {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-size: 20px;
+  }
+  
+  .search_wrap.search_wrap_1 .search_box .btn {
+    right: 0;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+  }
+  
+  .search_wrap.search_wrap_1 .search_box .input,
+  .search_wrap.search_wrap_3 .search_box .input {
+    padding-right: 80px;
+  }
+
+  .question_nav{
+      height: 600vh;
+  }
+
+  .question_title_header{
+      position: absolute;
+      left: 90px;
+      top: 250px;
+  }
+  .question-quantity{
+    position: absolute;
+    left: 300px;
+    top: 273px;
+  }
+
