@@ -128,21 +128,21 @@
                                      <div class="col-lg-4"> <!--Size box email and password -->
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-body">
-                                        <form>
+                                        <form id="login_user" method="POST" onsubmit="return login_user()">
                                             <div class="form-floating mb-3">
 											<label for="inputEmail">Email address</label>
-                                                <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" />
+                                                <input class="form-control" name="user_email" id="inputEmail" type="email" placeholder="name@example.com" />
                                             </div>
                                             <div class="form-floating mb-3">
 											<label for="inputPassword">Password</label>
-                                                <input class="form-control" id="inputPassword" type="password" placeholder="Password" />
+                                                <input class="form-control" name="user_password" id="inputPassword" type="password" placeholder="Password" />
                                             </div>
 											<br></br>
                                             <div class="form-check mb-3">
                                                 <input class="form-check-input" id="inputRememberPassword" type="checkbox" value="" />
                                                 <label class="form-check-label" for="inputRememberPassword">Remember Password</label>
                                             </div>
-											<div>	<a class="btn btn-primary" href="index_user.html">Login</a> </div>
+											<div>	<button type="submit" class="btn btn-primary">Login</button> </div>
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0"> 
 												<a class="small" href="password.html">Forgot Password?</a> </div>
                                         </form>

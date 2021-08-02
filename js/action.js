@@ -377,7 +377,7 @@ function store_ss(id,link_to)
 {
     try
     {
-        jQuery.get('http://localhost/learning/store_session.php?id='+id,
+        jQuery.get('http://localhost/lms/store_session.php?id='+id,
         function()
         {
             window.location=link_to;
@@ -420,7 +420,7 @@ function login_user()
                 if(obj.alert=='success')
                 {
                     console.log('success');
-                    store_ss(obj.user_id,'http://localhost/learning/testtitle.php');//tukar link ni
+                    store_ss(obj.user_id,'http://localhost/lms/index_user.html');//tukar link ni
                     //window.location='http://localhost/learning/testtitle.php';
                 }
                 else
@@ -468,7 +468,7 @@ function login_admin()
                 if(obj.alert=='success')
                 {
                     console.log('success');
-                    store_ss(obj.admin_id,'http://localhost/learning/admin_title.php');//tukar link ni
+                    store_ss(obj.admin_id,'http://localhost/lms/index_admin.html');//tukar link ni
                     //window.location='http://localhost/learning/testtitle.php';
                 }
                 else
