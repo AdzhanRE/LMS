@@ -83,7 +83,7 @@
                 <ul class="nav" id="main-menu">
 
                     <li>
-                        <a href="index_admin.html?page=homepage"><i class="fa fa-dashboard"></i>HOME</a>
+                        <a href="index_admin.php?page=homepage"><i class="fa fa-dashboard"></i>HOME</a>
                     </li>
 
                     <li>

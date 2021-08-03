@@ -68,7 +68,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html"><b>LMS</b>COURSE</a>
+                <a class="navbar-brand" href="index_admin.html"><b>LMS</b>COURSE</a>
             </div>
 
             <ul class="nav navbar-top-links navbar-right">
@@ -103,11 +103,11 @@
                 <ul class="nav" id="main-menu">
 
                     <li>
-                        <a href="index_user.html?page=homepage"><i class="fa fa-dashboard"></i>HOME</a>
+                        <a href="index_admin.html?page=homepage"><i class="fa fa-dashboard"></i>HOME</a>
                     </li>
                     
  <li>
-                        <a href="profile_user.php"><i class="fa fa-circle"></i> PROFILE</a>
+                        <a href="profile_admin.php"><i class="fa fa-circle"></i> PROFILE</a>
                    
                     <li>
                         <a href="#"><i class="fa fa-desktop"></i>CISCO<span class="fa arrow"></span></a>
@@ -211,38 +211,84 @@
 			  <footer><p>CLOUD IT SOLUTIONS <a href="http://webthemez.com"></a></p></footer>
 			  <div class="main">
             </div>
-			<form method="post" action="process.php" style="border:0px solid #ccc">
-  <div class="container">
-  
-    <h3>Add New Subtopic for Cisco</h3>
-    <p>Please fill in this form.</p>
-   
-	<table width="80%">
-	<tr>
-	  <td>Subtopic</td>
-	  <td><input type="text" placeholder="subtopic" name="title" required></td>
-	 </tr>
-	 <tr>
-	 <tr>
-	  <td>Title</td>
-      <td><input type="text" placeholder="title" name="genre" required></td>
-	 </tr>
-	 <tr>
-	  <td>Module</td>
-      <td><input type="text" placeholder="module" name="author" required></td>
-     </tr>
-	<tr>
-	<small><input name="userfile" type="file" accept="application/pdf, application/vnd.ms-excel" /></small>
-	<br></br>
-	</table>
-	  <td><td>
-	  <tr>
-	  <small> <button type="button" class="cancelbtn" name="cancel">Cancel</button></small>
-      <small><button type="submit" class="signupbtn" name="create">Create</button></small>
-	  </tr> 
-    </div>
-  </div>
-</form>
+			
+            <?php
+            //$targetfolder = "0";
+            //$test = "";
+            if(isset($_POST['create']))
+            {
+                $targetfolder = "uploads/"; 
+                $targetfolder = $targetfolder . basename( $_FILES['userfile']['name']) ; 
+                $ok=1; 
+                $file_type=$_FILES['userfile']['type']; 
+                if ($file_type=="application/pdf" || $file_type=="image/gif" || $file_type=="image/jpeg") { 
+                    if(move_uploaded_file($_FILES['userfile']['tmp_name'], $targetfolder)) 
+                    { 
+                        echo "The file ". basename( $_FILES['userfile']['name']). " is uploaded"; 
+                        $data = array(
+                            'ms_title' => $_POST['ms_title'],
+                            'ms_content' => $targetfolder,
+                            'ms_desc' => $_POST['ms_desc'],
+                            'mt_id' => $_POST['mt_id'],
+                        );
+                        $url = 'http://localhost/api_learning/index.php/module_subtopic/save/0';
+                        $ch = curl_init($url);
+                        $postString = http_build_query($data, '', '&');
+                        curl_setopt($ch, CURLOPT_POST, 1);
+                        curl_setopt($ch, CURLOPT_POSTFIELDS, $postString);
+                        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        
+                        $response = curl_exec($ch);
+                        curl_close($ch);
+                    } 
+                    else { 
+                        echo "Problem uploading file"; 
+                    } 
+                    //move_uploaded_file($_FILES['userfile']['tmp_name'], $targetfolder);
+                } 
+                else { 
+                    echo "You may only upload PDFs, JPEGs or GIF files.<br>"; 
+                } 
+            }
+            ?>
+            
+            
+            <form id="add_subtopic" method="POST" style="border:0px solid #ccc" enctype="multipart/form-data" >
+                <div class="container">
+                    <h3>Add New Subtopic for Huawei</h3>
+                    <p>Please fill in this form.</p>
+                    <table width="50%">
+                    <tr>
+                    <td>Subtopic</td>
+                    <td><input type="text" placeholder="subtopic" name="ms_title" required></td>
+                    </tr>
+                    <tr>
+                    <!-- <tr>
+                    <td>Title</td>
+                    <td><input type="text" placeholder="title" name="genre" required></td>
+                    </tr> -->
+                    <tr>
+                    <td>Description</td>
+                    <td><input type="text" placeholder="description" name="ms_desc" required></td>
+                    </tr>
+                    <tr>
+                    <small><input name="userfile" type="file" accept="application/pdf, application/vnd.ms-excel" /></small>
+                    <br></br>
+                    </table>
+
+                    <input type="hidden" name="mt_id" value="3"><!--Change this value according to its title id-->
+                    <input type="hidden" name="ms_content" value="<?=$targetfolder?>">
+
+                    <td><td>
+                    <tr>
+                    <small> <button type="button" class="cancelbtn" name="cancel">Cancel</button></small>
+                    <small><button type="submit" class="signupbtn" name="create">Create</button></small>
+                    </tr> 
+                    </div>
+                    
+                </div>
+            </form>
+		
 
 			<!-- Upload File--> 
 			<!-- "Open PHP" --> 
@@ -276,6 +322,7 @@
 			<!--   echo "You may only upload PDFs, JPEGs or GIF files.<br>"; -->
 			<!--   } -->
 			<!-- "Close PHP" --> 
+			
 			
             <!-- /. PAGE INNER  -->
         </div>

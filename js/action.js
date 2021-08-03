@@ -185,11 +185,11 @@ function update_title(id)//ni id title tu
 
 
 //subtitle
-function add_subtopic(id)
+function add_subtopic()
 {
     var d=jQuery("#add_subtopic").serialize();
 
-    $.ajax({
+    jQuery.ajax({
         type: "POST",
         url: 'http://localhost/api_learning/index.php/module_subtopic/save/0',
         data:d,
@@ -208,7 +208,9 @@ function add_subtopic(id)
                 if(obj.alert=='success')
                 {
                     console.log('success');
-                    window.location='http://localhost/learning/admin_sub.php?id='+id;
+                    //window.location='http://localhost/learning/admin_sub.php?id='+id;
+                    location.reload();
+
                 }
                 else
                 {
@@ -468,7 +470,7 @@ function login_admin()
                 if(obj.alert=='success')
                 {
                     console.log('success');
-                    store_ss(obj.admin_id,'http://localhost/lms/index_admin.html');//tukar link ni
+                    store_ss(obj.admin_id,'http://localhost/lms/index_admin.php');//tukar link ni
                     //window.location='http://localhost/learning/testtitle.php';
                 }
                 else

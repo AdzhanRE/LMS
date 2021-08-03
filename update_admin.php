@@ -27,7 +27,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index_admin.html"><b>LMS</b>COURSE</a>
+                <a class="navbar-brand" href="index_admin.php"><b>LMS</b>COURSE</a>
             </div>
 
             <ul class="nav navbar-top-links navbar-right">
@@ -79,7 +79,7 @@
                 <ul class="nav" id="main-menu">
 
                     <li>
-                        <a href="index_admin.html?page=homepage"><i class="fa fa-dashboard"></i>HOME</a>
+                        <a href="index_admin.php?page=homepage"><i class="fa fa-dashboard"></i>HOME</a>
                     </li>
                     
  <li>

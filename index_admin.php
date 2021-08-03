@@ -1,43 +1,4 @@
-<style>
-.cancelbtn {
-  background-color: #98DEFF;
-  color: white;
-  padding: 12px;
-  margin: 10px 0;
-  border: none;
-  width: 10%;
-  border-radius: 3px;
-  cursor: pointer;
-  font-size: 17px;
-}
 
-.cancelbtn:hover {
-    background: linear-gradient(to right, #98DEFF ,#00ADFE);
-}
-
-.signupbtn {
-  background-color: #98DEFF;
-  color: white;
-  padding: 12px;
-  margin: 10px 0;
-  border: none;
-  width: 10%;
-  border-radius: 3px;
-  cursor: pointer;
-  font-size: 17px;
-}
-
-.signupbtn:hover {
-    background: linear-gradient(to right, #98DEFF ,#00ADFE);
-}
-
-.container {
-  background-color: #f2f2f2;
-  padding: 5px 20px 15px 20px;
-  border: 1px solid lightgrey;
-  border-radius: 3px;
-}
-</style>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -103,14 +64,14 @@
                 <ul class="nav" id="main-menu">
 
                     <li>
-                        <a href="index_admin.php?page=homepage"><i class="fa fa-dashboard"></i>HOME</a>
+                        <a class="active-menu" href="index_admin.php?page=homepage"><i class="fa fa-dashboard"></i>HOME</a>
                     </li>
                     
  <li>
                         <a href="profile_admin.php"><i class="fa fa-circle"></i> PROFILE</a>
                    
                     <li>
-                        <a class="active-menu" href="#"><i class="fa fa-desktop"></i>CISCO<span class="fa arrow"></span></a>
+                        <a href="#"><i class="fa fa-desktop"></i>CISCO<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="add_subtopic_cisco.php">Add Subtopic</a>
@@ -209,119 +170,61 @@
                 <div class="row"></div>
                 <!-- /. ROW  -->
 			  <footer><p>CLOUD IT SOLUTIONS <a href="http://webthemez.com"></a></p></footer>
-			  <div class="main">
+			  <form>
+			  <table width="100%" border="1" align="center" cellpadding="0" cellspacing="0">
+				<tr align="left" bgcolor="#f2f2f2">
+				<th width="3%"><small>No</small></td>
+				<th width="26%"><small>Username</small></td>  
+				<th width="26%"><small></small></td>
+				</tr>
+				
+				<!-- Open PHP here -->
+				<!-- $color="1"; -->
+				<!-- for ($a=0; $a<$numrow; $a++) { -->
+				<!-- $row = mysqli_fetch_array($result); -->
+				<!-- if($color==1){ -->
+				<!-- echo "<tr bgcolor='#FFFFCC'>" -->
+				<!-- Close PHP here -->
+				
+				
+				<!-- <td>&nbsp;"Open PHP" echo $a+1; "Close PHP"</td> -->
+				<!-- <td>&nbsp;"Open PHP" echo ucwords (strtolower($row['username'])); "Close PHP"</td>    -->
+				<!-- <td>&nbsp;"Open PHP" echo ucwords (strtolower($row['name'])); "Close PHP"</td>  -->
+				<!-- <td>&nbsp;"Open PHP" echo ucwords (strtolower($row['email'])); "Close PHP"</td>  -->
+				<!-- <td>&nbsp;"Open PHP" echo $row['telephone']; "Close PHP"</td> -->
+				<!-- </tr> -->
+				
+				
+				<!-- "Open PHP" -->
+				<!-- $color="2"; -->
+				<!-- else{ -->
+				<!--  echo "<tr bgcolor='#FFCC99'>" -->
+				<!-- "Close PHP" -->
+				
+				
+				<!-- <td>&nbsp;"Open PHP" echo $a+1; "Close PHP"</td> -->
+				<!-- <td>&nbsp;"Open PHP" echo ucwords (strtolower($row['username'])); "Close PHP"</td>    -->
+				<!-- <td>&nbsp;"Open PHP" echo ucwords (strtolower($row['name'])); "Close PHP"</td>  -->
+				<!-- <td>&nbsp;"Open PHP" echo ucwords (strtolower($row['email'])); "Close PHP"</td>  -->
+				<!-- <td>&nbsp;"Open PHP" echo $row['telephone']; "Close PHP"</td> -->
+				<!-- </tr> -->
+				
+				
+				<!-- "Open PHP" -->
+				<!-- $color="1"; -->
+				<!-- } -->
+				<!-- } -->
+				<!-- if ($numrow==0) -->
+				<!-- { -->
+				<!-- echo '<tr> -->
+				<!-- <td colspan="8"><font color="#FF0000">No record avaiable.</font></td> -->
+				<!-- </tr>';  -->
+				<!-- } -->
+				<!-- "Close PHP"-->
+
+			   </table>
+			  </form>
             </div>
-			
-            <?php
-            $targetfolder = null;
-            if(isset($_POST['create']))
-            {
-                $targetfolder = "uploads/"; 
-                $targetfolder = $targetfolder . basename( $_FILES['userfile']['name']) ; 
-                $ok=1; 
-                $file_type=$_FILES['userfile']['type']; 
-                if ($file_type=="application/pdf" || $file_type=="image/gif" || $file_type=="image/jpeg") { 
-                    if(move_uploaded_file($_FILES['userfile']['tmp_name'], $targetfolder)) 
-                    { 
-                        echo "The file ". basename( $_FILES['userfile']['name']). " is uploaded"; 
-
-                        $data = array(
-                            'ms_title' => $_POST['ms_title'],
-                            'ms_content' => $targetfolder,
-                            'ms_desc' => $_POST['ms_desc'],
-                            'mt_id' => $_POST['mt_id'],
-                        );
-                        $url = 'http://localhost/api_learning/index.php/module_subtopic/save/0';
-                        $ch = curl_init($url);
-                        $postString = http_build_query($data, '', '&');
-                        curl_setopt($ch, CURLOPT_POST, 1);
-                        curl_setopt($ch, CURLOPT_POSTFIELDS, $postString);
-                        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        
-                        $response = curl_exec($ch);
-                        curl_close($ch);
-                    } 
-                    else { 
-                        echo "Problem uploading file"; 
-                    } 
-                    //move_uploaded_file($_FILES['userfile']['tmp_name'], $targetfolder);
-                } 
-                else { 
-                    echo "You may only upload PDFs, JPEGs or GIF files.<br>"; 
-                } 
-            }
-            ?>
-            
-		<form id="add_subtopic" method="POST" style="border:0px solid #ccc" enctype="multipart/form-data">
-            <div class="container">
-                <h3>Add New Subtopic for Cisco</h3>
-                <p>Please fill in this form.</p>
-                <table width="50%">
-                <tr>
-                <td>Subtopic</td>
-                <td><input type="text" placeholder="subtopic" name="ms_title" required></td>
-                </tr>
-                <tr>
-                <!-- <tr>
-                <td>Title</td>
-                <td><input type="text" placeholder="title" name="genre" required></td>
-                </tr> -->
-                <tr>
-                <td>Description</td>
-                <td><input type="text" placeholder="description" name="ms_desc" required></td>
-                </tr>
-                <tr>
-                <small><input name="userfile" type="file" accept="application/pdf, application/vnd.ms-excel" /></small>
-                <br></br>
-                </table>
-
-                <input type="hidden" name="mt_id" value="1"><!--Change this value according to its title id-->
-                <input type="hidden" name="ms_content" value="<?=$targetfolder?>">
-
-                <td><td>
-                <tr>
-                <small> <button type="button" class="cancelbtn" name="cancel">Cancel</button></small>
-                <small><button type="submit" class="signupbtn" name="create">Create</button></small>
-                </tr> 
-                </div>
-                
-            </div>
-        </form>
-
-			<!-- Upload File--> 
-			<!-- "Open PHP" --> 
-			<!-- $targetfolder = "testupload/"; --> 
-			<!-- $targetfolder = $targetfolder . basename( $_FILES['file']['name']) ; --> 
-			<!-- if(move_uploaded_file($_FILES['file']['tmp_name'], $targetfolder)) --> 
-			<!-- { --> 
-			<!-- echo "The file ". basename( $_FILES['file']['name']). " is uploaded"; --> 
-			<!-- } --> 
-			<!-- else { --> 
-			<!-- echo "Problem uploading file";--> 
-			<!-- } --> 
-			<!-- "Close PHP" --> 
-			
-			<!-- Limit Upload File--> 
-			<!-- "Open PHP" --> 
-			<!--  $targetfolder = "testupload/"; --> 
-			<!-- $targetfolder = $targetfolder . basename( $_FILES['file']['name']) ; --> 
-			<!-- $ok=1; --> 
-			<!-- $file_type=$_FILES['file']['type']; --> 
-			<!-- if ($file_type=="application/pdf" || $file_type=="image/gif" || $file_type=="image/jpeg") { --> 
-			<!-- if(move_uploaded_file($_FILES['file']['tmp_name'], $targetfolder)) --> 
-			<!--  { --> 
-			<!-- echo "The file ". basename( $_FILES['file']['name']). " is uploaded"; --> 
-			<!--  } --> 
-			<!--  else { -->
-			<!-- echo "Problem uploading file"; -->
-			<!--   } -->
-			<!--   } -->
-			<!--   else { -->
-			<!--   echo "You may only upload PDFs, JPEGs or GIF files.<br>"; -->
-			<!--   } -->
-			<!-- "Close PHP" --> 
-			
-			
             <!-- /. PAGE INNER  -->
         </div>
         <!-- /. PAGE WRAPPER  -->
@@ -349,7 +252,6 @@
 
     <!--Action JS-->
     <script src="js/action.js"></script>
-
 
 </body>
 
