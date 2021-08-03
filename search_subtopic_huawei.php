@@ -163,12 +163,31 @@
                         </h1>
 						<!-- SEARCH BOX -->
 						    <div class="s004" align="center">
-      <form  action="search_huawei.php" method="GET">
+            <?php
+                $g = isset($_GET) ? "?".http_build_query($_GET) : '';
+
+                $url = 'http://localhost/api_learning/index.php/module_subtopic/search_subtopic_title/3/'.$g;//3 is arcording to the title id
+                $ch = curl_init();
+
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_URL, $url);
+
+                $result=curl_exec($ch);
+                curl_close($ch);
+
+                $data=json_decode($result, true);
+                
+                //$title = $data['title'];
+
+                $sub = isset($data['sub']) ? $data['sub'] : '';
+
+            ?>
+      <form  action="" method="GET">
         <fieldset>
           <legend>WHAT ARE YOU LOOKING FOR?</legend>
           <div class="inner-form">
             <div class="input-field" >
-              <input class="form-control" id="choices-text-preset-values" type="text" placeholder="Type to search..." name="query" />
+              <input class="form-control" id="choices-text-preset-values" type="text" placeholder="Type to search..." name="sub" />
               <button class="btn-search" type="submit" value="Search">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
                   <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path>
@@ -183,15 +202,29 @@
 
                     </div>
                 </div>
+        <?php
+            if(sizeof($data['data'])>0)
+            {
+                foreach($data['data'] as $d)
+                {
+        ?>
+                    <div>
+                    <a href="http://localhost/lms/view_subtopic_huawei.php?id=<?=$d['ms_id']?>"><?=$d['ms_title']?></a>
+                    </div>
+        <?php
+                }
+            }
+            else
+            {
+        ?>
+                <div>
+                    <p>None</p>
+                </div>
+        <?php
+            }
+        ?>
 				
-				
-<tr>
-<td height="450px" valign="top">
 
-
-</td>
-</tr>
-    </form>
     
 </body>       
 <h3>
