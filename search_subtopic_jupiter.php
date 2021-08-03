@@ -210,7 +210,7 @@
                 {
         ?>
                     <div>
-                    <a href="http://localhost/lms/view_subtopic_huawei.php?id=<?=$d['ms_id']?>"><?=$d['ms_title']?></a>
+                    <a href="http://localhost/lms/view_subtopic_jupiter.php?id=<?=$d['ms_id']?>"><?=$d['ms_title']?></a>
                     </div>
         <?php
                 }
