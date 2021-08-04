@@ -63,7 +63,7 @@
                         <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                      <ul class="dropdown-menu dropdown-user">
-                        <li><a href="index.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><button type="submit" class="btn btn-primary" onclick="logout()"><i class="fa fa-sign-out fa-fw"></i> Logout</button>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->
@@ -165,38 +165,7 @@
 <tr align="left" valign="top">
 <td align="left" colspan="1" rowspan="1" bgcolor="transparent">
 
-
-<?php
-include("conn.php");
-
-                session_start();
-                if(!isset($_SESSION['admin_id']))
-                {
-                    echo "<script language=javascript type=text/javascript>alert('Sila log masuk untuk teruskan sesi !');
-                          window.location.href='login_form.php';</script>";
-                }
-
-if($conn!==FALSE)
-{
-    
-    $TableName="Admin";
-    $SQLstring="SELECT * FROM $TableName WHERE admin_id = '".$_SESSION['admin_id']."'";
-    $QueryResult= @mysql_query($SQLstring, $conn);
-    $num=mysql_num_rows($QueryResult);
-
-$i=0;   
-while($i<$num)
-    {
-
-        $admin_id=mysql_result($QueryResult, $i , "admin_id");
-        $admin_fname=mysql_result($QueryResult, $i , "admin_fname");  
-        
-        $admin_lname=mysql_result($QueryResult, $i , "admin_lname");
-        $admin_phone=mysql_result($QueryResult, $i , "admin_phone");
-        $admin_email=mysql_result($QueryResult, $i , "admin_email");
-        $admin_password=mysql_result($QueryResult, $i , "admin_password");        
-        
-?>  
+ 
 
 
                 <center><table>

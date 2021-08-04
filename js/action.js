@@ -499,7 +499,7 @@ function logout()
 {
     $.ajax({
         type: "POST",
-        url: 'http://localhost/learning/testlogout.php',//amik url logout
+        url: 'http://localhost/lms/logout.php',//amik url logout
        
 
         beforeSend:function()
