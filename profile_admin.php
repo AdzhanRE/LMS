@@ -18,6 +18,9 @@
 </head>
 
 <body>
+<?php
+    session_start();
+    ?>
 <div id="wrapper">
         <nav class="navbar navbar-default top-navbar" role="navigation">
             <div class="navbar-header">
@@ -157,70 +160,82 @@
         <!-- /. NAV SIDE  -->
         <div id="page-wrapper">
             <div id="page-inner">
+
+            <?php
+                $user_id = $_SESSION['user_id'];
+
+                $url ='http://localhost/api_learning/index.php/admin/view/'.$user_id;
+                $ch = curl_init();
+
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_URL, $url);
+
+                $result=curl_exec($ch);
+                curl_close($ch);
+
+                $data=json_decode($result, true);
+                
+                //$title = $data['title'];
+                //$id = $data['data']['admin_id'];
+                $d = $data['data'];
+                
+            ?>
             
             <h2><center> ADMIN'S PROFILE</center></h2><br>
 
-<?php
-
-                include("conn.php");
-
-                if($conn!==FALSE)
-                {
-                    // create table, check if the table was created
-                    $TableName="Admin";
-                    $SQLstring="SELECT * FROM $TableName 
-                    WHERE admin_id = '".$_SESSION['admin_id']."'";
-
-                    $QueryResult = mysql_query($SQLstring, $conn);
-                    
-                    while(($Row = mysql_fetch_assoc($QueryResult))  !==  FALSE)
-                    {
-
-                        echo '<center><table>';
-						
-						echo '<tr>';
-                        echo '<td> Staff Id :</td><td>'.$Row['admin_id'].'</td>';
-                        echo '</tr>';
-                        
-                        echo '<tr>';
-                        echo '<td> First Name :</td><td>'.$Row['user_fname'].'</td>';
-                        echo '</tr>';
-
-                        echo '<tr>';
-                        echo '<td>Last Name :</td><td>'.$Row['user_lname'].'</td>';
-                        echo '</tr>';
-
-                        echo '<tr>';
-                        echo '<td>Phone :</td><td>'.$Row['user_phone'].'</td>';
-                        echo '</tr>';
-                        
-
-                        echo '<tr>';
-                        echo '<td>Email:</td><td>'.$Row['user_email'].'</td>';
-                        echo '</tr>';
-                        
-
-                        echo '<tr>';
-                        echo '<td>Password :</td><td>'.$Row['user_pssword'].'</td>';
-                        echo '</tr>';
-                        
-                        
-
-
-
-                        echo '<br><form action="update_admin.php"><input type="submit" class="btn-md btn-warning" name="submit" value="UPDATE">';
-                     
-
-                        
-
-                    }
-                mysql_close($conn);
-                }
-                ?>
+            <form id="update_admin" method="POST" onsubmit="return update_admin(<?=$d['admin_id']?>)">
+                <div class="row mb-3">
+                    <div class="col-md-5">
+                        <div class="form-floating mb-3 mb-md-0">
+						<label for="inputFirstName">First name</label>
+                            <input class="form-control" name="admin_fname" type="text" value="<?=$d['admin_fname']?>"> 
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-floating mb-3 mb-md-0">
+						<label for="inputLastName">Last name</label>
+                            <input class="form-control" name="admin_lname" type="text" value="<?=$d['admin_lname']?>">
+                        </div>
+                    </div>
+                </div>
+				<div class="row mb-3">
+				<div class="col-md-5">
+					<div class="form-floating mb-3 mb-md-0">
+                    <label for="inputLastName">Phone Number</label>
+                            <input class="form-control" name="admin_notel" type="text" value="<?=$d['admin_notel']?>">
+					</div>
+				</div>
+                
+                    <div class="col-md-5">
+                        <div class="form-floating mb-3 mb-md-0">
+						    <label for="inputEmail">Email address</label>
+                    <input class="form-control" name="admin_email" type="email" value="<?=$d['admin_email']?>">
+                            
+                        </div>
+                    </div>
+					
+                    <div class="col-md-5">
+                        <div class="form-floating mb-3 mb-md-0">
+                            <label for="inputPassword">Password</label>
+                            <input class="form-control" name="admin_password" type="password" value="<?=$d['admin_password']?>">
+                            
+                        </div>
+                    </div>
+                </div>
+				
+				<br></br>
+				<div class="row mb-3">
+				<div class="col-md-4">
+				<div class="d-flex align-items-center justify-content-between mt-5 mb-0"> 
+                    <div class="d-grid"><button type="submit" class="btn btn-primary">Update Account</button>
+                </div>
+				</div>
+				</div>
+            </form>
 
          
               
-          </button>
+          
         </div> 
 
 

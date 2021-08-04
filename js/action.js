@@ -44,6 +44,52 @@ function add_user()
 }
 
 
+function update_user(id)
+{
+    var d=jQuery("#update_user").serialize();
+
+    $.ajax({
+        type: "POST",
+        url: 'http://localhost/api_learning/index.php/user/save/'+id,
+        data:d,
+
+        beforeSend:function()
+        {
+
+        },
+
+        success:function(h)
+        {
+            try
+            {
+                var obj=JSON.parse(h);
+
+                if(obj.alert=='success')
+                {
+                    console.log('success');
+                    alert("Success");
+                }
+                else
+                {
+                    console.log('failed');
+                }
+            }
+            catch(error)
+            {
+                console.log(error);
+            }
+        },
+
+        complete:function()
+        {
+
+        }
+    });
+
+    return false;
+}
+
+
 function add_admin()
 {
     var d=jQuery("#add_admin").serialize();
@@ -87,6 +133,52 @@ function add_admin()
 
     return false;
 
+}
+
+
+function update_admin(id)
+{
+    var d=jQuery("#update_admin").serialize();
+
+    $.ajax({
+        type: "POST",
+        url: 'http://localhost/api_learning/index.php/admin/save/'+id,
+        data:d,
+
+        beforeSend:function()
+        {
+
+        },
+
+        success:function(h)
+        {
+            try
+            {
+                var obj=JSON.parse(h);
+
+                if(obj.alert=='success')
+                {
+                    console.log('success');
+                    alert("Success");
+                }
+                else
+                {
+                    console.log('failed');
+                }
+            }
+            catch(error)
+            {
+                console.log(error);
+            }
+        },
+
+        complete:function()
+        {
+
+        }
+    });
+
+    return false;
 }
 
 
