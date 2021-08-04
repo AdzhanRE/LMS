@@ -516,7 +516,7 @@ function logout()
                 if(obj.msg=='success')
                 {
                     console.log('success');
-                    
+                    window.location='http://localhost/lms/index.html';
                 }
                 else
                 {
