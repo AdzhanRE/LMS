@@ -213,7 +213,7 @@
             </div>
 			
             <?php
-            //$targetfolder = "0";
+            $targetfolder = null;
             //$test = "";
             if(isset($_POST['create']))
             {
