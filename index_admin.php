@@ -170,57 +170,57 @@
                 <div class="row"></div>
                 <!-- /. ROW  -->
 			  <footer><p>CLOUD IT SOLUTIONS <a href="http://webthemez.com"></a></p></footer>
+
+              <?php
+                $url = 'http://localhost/api_learning/index.php/user';
+                $ch = curl_init();
+
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_URL, $url);
+
+                $result=curl_exec($ch);
+                curl_close($ch);
+
+                $data=json_decode($result, true);
+                
+                //$title = $data['title'];
+                //$id = $data['data']['admin_id'];
+                $total_id = $data['count'];
+            ?>
+
 			  <form>
 			  <table width="100%" border="1" align="center" cellpadding="0" cellspacing="0">
 				<tr align="left" bgcolor="#f2f2f2">
-				<th width="3%"><small>No</small></td>
-				<th width="26%"><small>Username</small></td>  
-				<th width="26%"><small></small></td>
+				<!-- <th width="3%"><small>No</small></th> -->
+				<th width="26%"><small>Name</small></th>  
+				<th width="20%"><small>Email</small></th>
+                <th width="20%"><small>Phone No.</small></th>
+                <th width="10%"><small>Action</small></th>
+                
 				</tr>
-				
-				<!-- Open PHP here -->
-				<!-- $color="1"; -->
-				<!-- for ($a=0; $a<$numrow; $a++) { -->
-				<!-- $row = mysqli_fetch_array($result); -->
-				<!-- if($color==1){ -->
-				<!-- echo "<tr bgcolor='#FFFFCC'>" -->
-				<!-- Close PHP here -->
-				
-				
-				<!-- <td>&nbsp;"Open PHP" echo $a+1; "Close PHP"</td> -->
-				<!-- <td>&nbsp;"Open PHP" echo ucwords (strtolower($row['username'])); "Close PHP"</td>    -->
-				<!-- <td>&nbsp;"Open PHP" echo ucwords (strtolower($row['name'])); "Close PHP"</td>  -->
-				<!-- <td>&nbsp;"Open PHP" echo ucwords (strtolower($row['email'])); "Close PHP"</td>  -->
-				<!-- <td>&nbsp;"Open PHP" echo $row['telephone']; "Close PHP"</td> -->
-				<!-- </tr> -->
-				
-				
-				<!-- "Open PHP" -->
-				<!-- $color="2"; -->
-				<!-- else{ -->
-				<!--  echo "<tr bgcolor='#FFCC99'>" -->
-				<!-- "Close PHP" -->
+
+                <?php
+                    foreach($data['data'] as $d)
+                    {
+                ?>
+                            <tr align="left" bgcolor="#f2f2f2">
+                            <!-- <td width="3%"><small></small></td> -->
+                            <td width="26%"><small><?=$d['user_fname']?> <?=$d['user_lname']?></small></td>  
+                            <td width="20%"><small><?=$d['user_email']?></small></td>
+                            <td width="20%"><small><?=$d['user_notel']?></small></td>
+                            <td width="10%"><small>
+                            <button type="submit" class="btn btn-primary" onclick="delete_user(<?=$d['user_id']?>)">Delete User</button>
+                            </small></td>
+                            </tr>
+
+                <?php
+                        
+                    }
+                ?>
+
+                
 				
 				
-				<!-- <td>&nbsp;"Open PHP" echo $a+1; "Close PHP"</td> -->
-				<!-- <td>&nbsp;"Open PHP" echo ucwords (strtolower($row['username'])); "Close PHP"</td>    -->
-				<!-- <td>&nbsp;"Open PHP" echo ucwords (strtolower($row['name'])); "Close PHP"</td>  -->
-				<!-- <td>&nbsp;"Open PHP" echo ucwords (strtolower($row['email'])); "Close PHP"</td>  -->
-				<!-- <td>&nbsp;"Open PHP" echo $row['telephone']; "Close PHP"</td> -->
-				<!-- </tr> -->
-				
-				
-				<!-- "Open PHP" -->
-				<!-- $color="1"; -->
-				<!-- } -->
-				<!-- } -->
-				<!-- if ($numrow==0) -->
-				<!-- { -->
-				<!-- echo '<tr> -->
-				<!-- <td colspan="8"><font color="#FF0000">No record avaiable.</font></td> -->
-				<!-- </tr>';  -->
-				<!-- } -->
-				<!-- "Close PHP"-->
 
 			   </table>
 			  </form>

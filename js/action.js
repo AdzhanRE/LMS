@@ -585,6 +585,51 @@ function delete_data(table,id)
 }
 
 
+function delete_user(id)
+{
+
+    $.ajax({
+        type: "POST",
+        url: 'http://localhost/api_learning/index.php/user/delete/'+id,
+
+        beforeSend:function()
+        {
+
+        },
+
+        success:function(h)
+        {
+            try
+            {
+                var obj=JSON.parse(h);
+
+                if(obj.alert=='success')
+                {
+                    console.log('success');
+                    location.reload();
+                }
+                else
+                {
+                    console.log('failed');
+                }
+            }
+            catch(error)
+            {
+                console.log(error);
+            }
+        },
+
+        complete:function()
+        {
+
+        }
+    });
+
+    return false;
+
+}
+
+
 function changeTopic(link_to)
 {
     var selectTopic = document.getElementById("selectTopic");
