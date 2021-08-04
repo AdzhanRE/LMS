@@ -120,7 +120,7 @@
                             </li>
 							
 							 <li>
-                                <a href="view_subtopic_cisco.php">View Subtopic</a>
+                                <a href="view_subtopic_cisco.php?id=0">View Subtopic</a>
                             </li>
                             
 
@@ -143,7 +143,7 @@
                             </li>
 							
 							<li>
-                                <a href="view_subtopic_jupiter.php">View Subtopic</a>
+                                <a href="view_subtopic_jupiter.php?id=0">View Subtopic</a>
                             </li>
                             
                             
@@ -161,7 +161,7 @@
                         <a href="search_subtopic_huawei.php">Search Subtopic</a>
                         </li>
 <li>
-                                <a href="view_subtopic_huawei.php">View Subtopic</a>
+                                <a href="view_subtopic_huawei.php?id=0">View Subtopic</a>
                             </li>
                             
 

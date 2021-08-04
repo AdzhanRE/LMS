@@ -93,7 +93,7 @@
                         <a href="#"><i class="fa fa-desktop"></i>CISCO<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="view_subtopic_cisco.php">View Subtopic</a>
+                                <a href="view_subtopic_cisco.php?id=0">View Subtopic</a>
                             </li>
                             <li>
                                 <a href="search_subtopic_cisco.php">Search Subtopic</a>
@@ -112,7 +112,7 @@
                         <a class="active-menu" href="#"><i class="fa fa-desktop"></i>JUPITER<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a class="active-menu" href="view_subtopic_jupiter.php">View Subtopic</a>
+                                <a class="active-menu" href="view_subtopic_jupiter.php?id=0">View Subtopic</a>
                             </li>
                             <li>
                                 <a href="search_subtopic_jupiter.php">Search Subtopic</a>
@@ -126,7 +126,7 @@
                         <a href="#"><i class="fa fa-desktop"></i>HUAWEI<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="view_subtopic_huawei.php">View Subtopic</a>
+                                <a href="view_subtopic_huawei.php?id=0">View Subtopic</a>
                             </li>
                             <li>
                                 <a href="search_subtopic_huawei.php">Search Subtopic</a>
@@ -164,30 +164,91 @@
                         JUPITER
                         </p>
 
+                        <?php
+                            $g = isset($_GET) ? "?".http_build_query($_GET) : '';
+                            $g2 = $_GET['id'];
 
+                            $url ='http://localhost/api_learning/index.php/module_subtopic/view_all_topic/2';//2 is jupiter
+                            $ch = curl_init();
+
+                            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                            curl_setopt($ch, CURLOPT_URL, $url);
+
+                            $result=curl_exec($ch);
+                            curl_close($ch);
+
+                            $data=json_decode($result, true);
+                            
+                            $title = $data['title'];
+                            //$id = $_SESSION['user_id'];
+                            //$ms_id = $_GET['id'];
+                            $data2 = $data['data'];
+                            $link_to = "view_subtopic_jupiter.php"
+                        ?>
                         <!-- LIST OF THE COURSES  -->
-                        <select class="select_course">
+                        <select id="selectTopic" class="select_course" name="subtopic_slt" onchange="return changeTopic('<?=$link_to?>')">
                             <option hidden>Learning course</option>
-                            <optgroup label="Main Course 1">
+                            <?php
+                            foreach($data2 as $d=>$s)
+                            {
+                                $slt=$g2==$s['ms_id'] ? "selected=\"selected\"" : ""
+                            ?>
+                                
+                                <option value="<?=$s['ms_id']?>" <?=$slt?>><?=$s['ms_title']?></option>
 
-                                <option>course-1</option>
-                                <option>course-2</option>
-
-                            <optgroup label="Main Course 2">
-
-                                <option>course-1</option>
-                                <option>course-2</option>
+                            <?php
+                            }
+                            ?>
                         </select>
 
 
 
 
                         <!-- DISPLAY THE DATA  -->
-                        <div class="course_display">
+                        <?php
+                            
 
-                            <p>
-                                &nbsp;&nbsp;&nbsp;&nbsp;The data will display here
-                            </p>
+                            $url2 = 'http://localhost/api_learning/index.php/module_subtopic/view'.$g;
+                            $ch2 = curl_init();
+
+                            curl_setopt($ch2, CURLOPT_RETURNTRANSFER, true);
+                            curl_setopt($ch2, CURLOPT_URL, $url2);
+
+                            $result2=curl_exec($ch2);
+                            curl_close($ch2);
+
+                            $data_sub=json_decode($result2, true);
+                            
+                            //$title = $data['title'];
+
+                            //$sub = isset($data['sub']) ? $data['sub'] : '';
+                            $d_sub = $data_sub['data'];
+
+                        ?>
+                        <div class="course_display">
+                            <?php
+                            if($d_sub!="")
+                            {
+                            ?>
+                                <p>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<?=$d_sub['ms_title']?>
+                                </p>
+
+                                <p>
+                                    <a href="<?=$d_sub['ms_content']?>">Click to download the note</a>
+                                </p>
+                            <?php
+                            }
+                            else
+                            {
+                            ?>
+                                <p>
+                                &nbsp;&nbsp;&nbsp;&nbsp;Please select the Topic
+                                </p>
+
+                            <?php
+                            }
+                            ?>
 
                         </div>
 
@@ -229,7 +290,7 @@
             <!-- User's question enquiry  -->
             <div class="question_wrap">
 
-                <form class="question_form">
+            <form class="question_form" id="add_question" method="POST" onsubmit="return add_question()">
                     <!--
                     <div class="question_list">
                         <br>
@@ -242,10 +303,16 @@
                     -->
 
                     <div class="form">
-                        <textarea id="ask_question" class="form__input" autocomplete="off" placeholder="Write here " ></textarea>
+                        <textarea id="ask_question" class="form__input" autocomplete="off" placeholder="Write here " name="q_question"></textarea>
                         <!--<input type="text" id="ask_question" class="form__input" autocomplete="off" placeholder=" ">-->
                         <label for="ask_question" class="form__label">Curious more, drop your question here</label>
                     </div>
+                    <input type="hidden" name="q_answer" value="0">
+                    <input type="hidden" name="user_id" value="<?=$id?>">
+                    <input type="hidden" name="admin_id" value="0">
+
+                    <input type="hidden" name="ms_id" value="<?=$g2?>">
+
                     <!-- button submit question into database -->
                     <input type="submit" value="Upload Question" class="submit_question" required>
                 </form>

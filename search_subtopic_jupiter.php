@@ -98,7 +98,7 @@
                         <a href="#"><i class="fa fa-desktop"></i>CISCO<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="view_subtopic_cisco.php">View Subtopic</a>
+                                <a href="view_subtopic_cisco.php?id=0">View Subtopic</a>
                             </li>
                             <li>
                                 <a  href="search_subtopic_cisco.php">Search Subtopic</a>
@@ -117,7 +117,7 @@
 <a class="active-menu" href="#"><i class="fa fa-desktop"></i>JUPITER<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
-                                <a href="view_subtopic_jupiter.php">View Subtopic</a>
+                                <a href="view_subtopic_jupiter.php?id=0">View Subtopic</a>
                             </li>
                             <li>
                                 <a class="active-menu" href="search_subtopic_jupiter.php">Search Subtopic</a>
@@ -131,7 +131,7 @@
                         <a href="#"><i class="fa fa-desktop"></i>HUAWEI<span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                         <li>
-                       <a href="view_subtopic_huawei.php">View Subtopic</a>
+                       <a href="view_subtopic_huawei.php?id=0">View Subtopic</a>
                         </li>
                         <li>
                         <a href="search_subtopic_huawei.php">Search Subtopic</a>
@@ -210,7 +210,7 @@
                 {
         ?>
                     <div>
-                    <a href="http://localhost/lms/view_subtopic_jupiter.php?id=<?=$d['ms_id']?>"><?=$d['ms_title']?></a>
+                    <a href="http://localhost/lms/view_subtopic_jupiter.php?id=0?id=<?=$d['ms_id']?>"><?=$d['ms_title']?></a>
                     </div>
         <?php
                 }

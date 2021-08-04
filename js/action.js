@@ -583,3 +583,12 @@ function delete_data(table,id)
     return false;
 
 }
+
+
+function changeTopic(link_to)
+{
+    var selectTopic = document.getElementById("selectTopic");
+    var selectedValue = selectTopic.options[selectTopic.selectedIndex].value;
+
+    window.location = 'http://localhost/lms/'+link_to+'?id='+selectedValue;
+}
