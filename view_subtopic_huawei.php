@@ -22,6 +22,9 @@
 </head>
 
 <body>
+<?php
+    session_start();
+    ?>
     <div id="wrapper">
         <nav class="navbar navbar-default top-navbar" role="navigation">
             <div class="navbar-header">
@@ -180,7 +183,7 @@
                             $data=json_decode($result, true);
                             
                             $title = $data['title'];
-                            //$id = $_SESSION['user_id'];
+                            $id = $_SESSION['user_id'];
                             //$ms_id = $_GET['id'];
                             $data2 = $data['data'];
                             $link_to = "view_subtopic_huawei.php"

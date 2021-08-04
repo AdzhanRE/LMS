@@ -22,7 +22,9 @@
 
 
 </head>
-
+<?php
+    session_start();
+    ?>
 <body>
     <div id="wrapper">
         <nav class="navbar navbar-default top-navbar" role="navigation">
@@ -172,6 +174,24 @@
 
 
 
+                        <?php
+
+                            $id = $_SESSION['user_id'];
+
+                            $url = 'http://localhost/api_learning/index.php/question/view_all_q/'.$id;//panggil data ikut u_id, ejas lps jd session
+                            $ch = curl_init();
+
+                            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                            curl_setopt($ch, CURLOPT_URL, $url);
+
+                            $result=curl_exec($ch);
+                            curl_close($ch);
+
+                            $data=json_decode($result, true);
+                            
+                            $title = $data['title'];
+                            
+                        ?>
                         <!-- Question  -->
                         <div class="course_display question_nav">
 
@@ -179,41 +199,65 @@
 
                             <!-- search box question  -->
                             <div class="container">
-                                <div class="search_wrap search_wrap_1">
+                                <!-- <div class="search_wrap search_wrap_1">
                                     <div class="search_box">
                                         <input type="text" class="input" placeholder="Search all course question..." style="width: 90%;">
                                         <div class="btn btn_common">
                                             <i class="fas fa-search"></i>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                             </div>
+                            <br>
+                            <br>
 
                             <!-- display question -->
 
-                            <p class="question_title_header">
+                            <!-- <p class="question_title_header">
                                 All questions in this course
-                            </p>
+                            </p> -->
                             <!-- total question -->
-                            <label for="" class="question-quantity">(9572) <small>example</small></label>
+                            <!-- <label for="" class="question-quantity">(9572) <small>example</small></label> -->
 
                             <!-- question collection -->
 
                             <div class="the_question">
-                                <?php
-
-                                echo '<table>
-                                    <tr>
-                                        <td>Question</td>
-                                        <td>Date</td>
+                                <table width="90%" border="1" align="center" cellpadding="0" cellspacing="0">
+                                    <tr align="left">
+                                        <th width="26%">Question</th>
+                                        <th width="26%">Answer</th>
                                     </tr>
-                                    <tr>
-                                        <td>'.$result[" "].'</td>
-                                        <td>'.$result[" "].'</td>
-                                    </tr>
-                                </table>';
 
-                                ?>
+                                    <?php
+                                    foreach($data['data'] as $d)
+                                    {
+                                    ?>
+                                    <tr align="left">
+                                        <td width="26%"><?=$d['q_question']?></td>
+                                        <td width="26%">
+                                        <?php
+                                            $ans = $d['q_answer'];
+                                            if($ans=="0")
+                                            {
+                                        ?>
+                                            <p>No Answer Yet</p>
+                                        <?php
+                                            }
+                                            else
+                                            {
+                                        ?>
+                                            <p><?=$ans?></p>
+                                        <?php
+                                            }
+                                        ?>
+                                        </td>
+                                    </tr>
+                                    <?php
+                                    }
+                                    ?>
+
+                                    
+                                </table>
 
                             </div>
 

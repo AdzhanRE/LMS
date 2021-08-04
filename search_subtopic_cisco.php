@@ -26,6 +26,9 @@
 </head>
 
 <body>
+    <?php
+    session_start();
+    ?>
 
 <div id="wrapper">
         <nav class="navbar navbar-default top-navbar" role="navigation">
@@ -202,7 +205,7 @@
 
                     </div>
                 </div>
-	
+                User ID = <?=$_SESSION['user_id']?>
         <?php
             if(sizeof($data['data'])>0)
             {
