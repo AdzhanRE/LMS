@@ -164,7 +164,7 @@
             <?php
                 $user_id = $_SESSION['user_id'];
 
-                $url ='http://localhost/api_learning/index.php/admin/view/'.$user_id;
+                $url ='http://api.nextexpertsacademymodules.great-site.net/api_learning/index.php/admin/view/'.$user_id;
                 $ch = curl_init();
 
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

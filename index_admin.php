@@ -172,7 +172,7 @@
 			  <footer><p>CLOUD IT SOLUTIONS <a href="http://webthemez.com"></a></p></footer>
 
               <?php
-                $url = 'http://localhost/api_learning/index.php/user';
+                $url = 'http://api.nextexpertsacademymodules.great-site.net/api_learning/index.php/user';
                 $ch = curl_init();
 
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

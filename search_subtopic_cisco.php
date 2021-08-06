@@ -169,7 +169,7 @@
             <?php
                 $g = isset($_GET) ? "?".http_build_query($_GET) : '';
 
-                $url = 'http://localhost/api_learning/index.php/module_subtopic/search_subtopic_title/1/'.$g;//1 is arcording to the title id
+                $url = 'http://api.nextexpertsacademymodules.great-site.net/api_learning/index.php/module_subtopic/search_subtopic_title/1/'.$g;//1 is arcording to the title id
                 $ch = curl_init();
 
                 curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -213,7 +213,7 @@
                 {
         ?>
                     <div>
-                    <a href="http://localhost/lms/view_subtopic_cisco.php?id=0?id=<?=$d['ms_id']?>"><?=$d['ms_title']?></a>
+                    <a href="http://nextexpertsacademymodules.great-site.net/view_subtopic_cisco.php?id=0?id=<?=$d['ms_id']?>"><?=$d['ms_title']?></a>
                     </div>
         <?php
                 }

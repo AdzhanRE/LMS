@@ -231,7 +231,7 @@
                             'ms_desc' => $_POST['ms_desc'],
                             'mt_id' => $_POST['mt_id'],
                         );
-                        $url = 'http://localhost/api_learning/index.php/module_subtopic/save/0';
+                        $url = 'http://api.nextexpertsacademymodules.great-site.net/api_learning/index.php/module_subtopic/save/0';
                         $ch = curl_init($url);
                         $postString = http_build_query($data, '', '&');
                         curl_setopt($ch, CURLOPT_POST, 1);

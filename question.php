@@ -178,7 +178,7 @@
 
                             $id = $_SESSION['user_id'];
 
-                            $url = 'http://localhost/api_learning/index.php/question/view_all_q/'.$id;//panggil data ikut u_id, ejas lps jd session
+                            $url = 'http://api.nextexpertsacademymodules.great-site.net/api_learning/index.php/question/view_all_q/'.$id;//panggil data ikut u_id, ejas lps jd session
                             $ch = curl_init();
 
                             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

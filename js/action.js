@@ -4,7 +4,7 @@ function add_user()
 
     $.ajax({
         type: "POST",
-        url: 'http://localhost/api_learning/index.php/user/save/0',
+        url: 'http://api.nextexpertsacademymodules.great-site.net/api_learning/index.php/user/save/0',
         data:d,
 
         beforeSend:function()
@@ -50,7 +50,7 @@ function update_user(id)
 
     $.ajax({
         type: "POST",
-        url: 'http://localhost/api_learning/index.php/user/save/'+id,
+        url: 'http://api.nextexpertsacademymodules.great-site.net/api_learning/index.php/user/save/'+id,
         data:d,
 
         beforeSend:function()
@@ -96,7 +96,7 @@ function add_admin()
 
     $.ajax({
         type: "POST",
-        url: 'http://localhost/api_learning/index.php/admin/save/0',
+        url: 'http://api.nextexpertsacademymodules.great-site.net/api_learning/index.php/admin/save/0',
         data:d,
 
         beforeSend:function()
@@ -142,7 +142,7 @@ function update_admin(id)
 
     $.ajax({
         type: "POST",
-        url: 'http://localhost/api_learning/index.php/admin/save/'+id,
+        url: 'http://api.nextexpertsacademymodules.great-site.net/api_learning/index.php/admin/save/'+id,
         data:d,
 
         beforeSend:function()
@@ -189,7 +189,7 @@ function add_title()
 
     $.ajax({
         type: "POST",
-        url: 'http://localhost/api_learning/index.php/module_title/save/0',
+        url: 'http://api.nextexpertsacademymodules.great-site.net/api_learning/index.php/module_title/save/0',
         data:d,
 
         beforeSend:function()
@@ -235,7 +235,7 @@ function update_title(id)//ni id title tu
 
     $.ajax({
         type: "POST",
-        url: 'http://localhost/api_learning/index.php/module_title/save/'+id,
+        url: 'http://api.nextexpertsacademymodules.great-site.net/api_learning/index.php/module_title/save/'+id,
         data:d,
 
         beforeSend:function()
@@ -283,7 +283,7 @@ function add_subtopic()
 
     jQuery.ajax({
         type: "POST",
-        url: 'http://localhost/api_learning/index.php/module_subtopic/save/0',
+        url: 'http://api.nextexpertsacademymodules.great-site.net/api_learning/index.php/module_subtopic/save/0',
         data:d,
 
         beforeSend:function()
@@ -331,7 +331,7 @@ function update_subtopic(id)//ni id subtopic tu
 
     $.ajax({
         type: "POST",
-        url: 'http://localhost/api_learning/index.php/module_subtopic/save/'+id,
+        url: 'http://api.nextexpertsacademymodules.great-site.net/api_learning/index.php/module_subtopic/save/'+id,
         data:d,
 
         beforeSend:function()
@@ -378,7 +378,7 @@ function add_question()
 
     $.ajax({
         type: "POST",
-        url: 'http://localhost/api_learning/index.php/question/save/0',
+        url: 'http://api.nextexpertsacademymodules.great-site.net/api_learning/index.php/question/save/0',
         data:d,
 
         beforeSend:function()
@@ -425,7 +425,7 @@ function add_answer(id)
 
     $.ajax({
         type: "POST",
-        url: 'http://localhost/api_learning/index.php/question/save/'+id,
+        url: 'http://api.nextexpertsacademymodules.great-site.net/api_learning/index.php/question/save/'+id,
         data:d,
 
         beforeSend:function()
@@ -471,7 +471,7 @@ function store_ss(id,link_to)
 {
     try
     {
-        jQuery.get('http://localhost/lms/store_session.php?id='+id,
+        jQuery.get('http://nextexpertsacademymodules.great-site.net/store_session.php?id='+id,
         function()
         {
             window.location=link_to;
@@ -497,7 +497,7 @@ function login_user()
 
     $.ajax({
         type: "POST",
-        url: 'http://localhost/api_learning/index.php/user/login/',
+        url: 'http://api.nextexpertsacademymodules.great-site.net/api_learning/index.php/user/login/',
         data:d,
 
         beforeSend:function()
@@ -514,7 +514,7 @@ function login_user()
                 if(obj.alert=='success')
                 {
                     console.log('success');
-                    store_ss(obj.user_id,'http://localhost/lms/index_user.html');//tukar link ni
+                    store_ss(obj.user_id,'http://nextexpertsacademymodules.great-site.net/index_user.html');//tukar link ni
                     //window.location='http://localhost/learning/testtitle.php';
                 }
                 else
@@ -545,7 +545,7 @@ function login_admin()
 
     $.ajax({
         type: "POST",
-        url: 'http://localhost/api_learning/index.php/admin/login/',
+        url: 'http://api.nextexpertsacademymodules.great-site.net/api_learning/index.php/admin/login/',
         data:d,
 
         beforeSend:function()
@@ -562,7 +562,7 @@ function login_admin()
                 if(obj.alert=='success')
                 {
                     console.log('success');
-                    store_ss(obj.admin_id,'http://localhost/lms/index_admin.php');//tukar link ni
+                    store_ss(obj.admin_id,'http://nextexpertsacademymodules.great-site.net/index_admin.php');//tukar link ni
                     //window.location='http://localhost/learning/testtitle.php';
                 }
                 else
@@ -591,7 +591,7 @@ function logout()
 {
     $.ajax({
         type: "POST",
-        url: 'http://localhost/lms/logout.php',//amik url logout
+        url: 'http://nextexpertsacademymodules.great-site.net/logout.php',//amik url logout
        
 
         beforeSend:function()
@@ -608,7 +608,7 @@ function logout()
                 if(obj.msg=='success')
                 {
                     console.log('success');
-                    window.location='http://localhost/lms/index.html';
+                    window.location='http://nextexpertsacademymodules.great-site.net/index.html';
                 }
                 else
                 {
@@ -637,7 +637,7 @@ function delete_data(table,id)
 
     $.ajax({
         type: "POST",
-        url: 'http://localhost/api_learning/index.php/'+table+'/delete/'+id,
+        url: 'http://api.nextexpertsacademymodules.great-site.net/api_learning/index.php/'+table+'/delete/'+id,
 
         beforeSend:function()
         {
@@ -682,7 +682,7 @@ function delete_user(id)
 
     $.ajax({
         type: "POST",
-        url: 'http://localhost/api_learning/index.php/user/delete/'+id,
+        url: 'http://api.nextexpertsacademymodules.great-site.net/api_learning/index.php/user/delete/'+id,
 
         beforeSend:function()
         {
@@ -727,5 +727,5 @@ function changeTopic(link_to)
     var selectTopic = document.getElementById("selectTopic");
     var selectedValue = selectTopic.options[selectTopic.selectedIndex].value;
 
-    window.location = 'http://localhost/lms/'+link_to+'?id='+selectedValue;
+    window.location = 'http://nextexpertsacademymodules.great-site.net/'+link_to+'?id='+selectedValue;
 }

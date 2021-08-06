@@ -171,7 +171,7 @@
                             $g = isset($_GET) ? "?".http_build_query($_GET) : '';
                             $g2 = $_GET['id'];
 
-                            $url ='http://localhost/api_learning/index.php/module_subtopic/view_all_topic/1';//1 is cisco
+                            $url ='http://api.nextexpertsacademymodules.great-site.net/api_learning/index.php/module_subtopic/view_all_topic/1';//1 is cisco
                             $ch = curl_init();
 
                             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
@@ -211,7 +211,7 @@
                         <?php
                             
 
-                            $url2 = 'http://localhost/api_learning/index.php/module_subtopic/view'.$g;
+                            $url2 = 'http://api.nextexpertsacademymodules.great-site.net/api_learning/index.php/module_subtopic/view'.$g;
                             $ch2 = curl_init();
 
                             curl_setopt($ch2, CURLOPT_RETURNTRANSFER, true);
